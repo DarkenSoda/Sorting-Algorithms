@@ -5,7 +5,7 @@
 
 namespace Sortlib {
     template<typename T>
-    void MergeSort(T arr[], int low, int mid, int high) {
+    void Merge(T arr[], int low, int mid, int high) {
         int n1 = mid - low + 1;
         int n2 = high - mid;
         T left[n1], right[n2];
@@ -42,14 +42,14 @@ namespace Sortlib {
     }
 
     template<typename T>
-    void Merge(T arr[], int low, int high) {
+    void MergeSort(T arr[], int low, int high) {
         if (low >= high) return;
         int mid = (low + high) / 2;
-        Merge(arr, low, mid);
-        Merge(arr, mid + 1, high);
-        MergeSort(arr, low, mid, high);
+        MergeSort(arr, low, mid);
+        MergeSort(arr, mid + 1, high);
+        Merge(arr, low, mid, high);
     }
-    
+
     template<typename T>
     void InsertionSort(T arr[], const int SIZE) {
         for (int i = 0; i < SIZE; i++) {
