@@ -4,8 +4,8 @@ using namespace std;
 
 
 int main() {
-    int arr[3] = { 2, 3, 1 };
-    Sortlib::InsertionSort(arr, 3);
+    int arr[] = { 2, 3, 1 ,4, 6};
+    Sortlib::MergeSort(arr);
     for (auto i : arr) cout << i << ' ';
     cout << '\n';
 }

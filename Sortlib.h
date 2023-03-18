@@ -1,7 +1,7 @@
 #ifndef SORTLIB_H
 #define SORTLIB_H
 
-#include<iostream>
+#include<bits/stdc++.h>
 
 namespace Sortlib {
     template<typename T>
@@ -41,8 +41,8 @@ namespace Sortlib {
         }
     }
 
-    template<typename T>
-    void MergeSort(T arr[], int low, int high) {
+    template<typename T, int sz>
+    void MergeSort(T (&arr)[sz], int low = 0, int high = sz - 1) {
         if (low >= high) return;
         int mid = (low + high) / 2;
         MergeSort(arr, low, mid);
@@ -50,12 +50,22 @@ namespace Sortlib {
         Merge(arr, low, mid, high);
     }
 
-    template<typename T>
-    void InsertionSort(T arr[], const int SIZE) {
-        for (int i = 0; i < SIZE; i++) {
-            for (int j = SIZE - 1; j > i; j--) {
-                if (arr[j] < arr[j - 1])
-                    std::swap(arr[j], arr[j - 1]);
+    template<typename T, int sz>
+    void SelectionSort(T (&arr)[sz]) {
+        for (int i = 0; i < sz - 1; i++) {
+            int least = i;
+            for (int j = i + 1; j < sz; j++) {
+                if (arr[j] < arr[least]) least = j;
+            }
+            std::swap(arr[i], arr[least]);
+        }
+    }
+
+    template<typename T, int sz>
+    void BubbleSort(T (&arr)[sz]) {
+        for (int i = sz - 1; i > 0; i--) {
+            for (int j = 1; j <= i; j++) {
+                if (arr[j] < arr[j - 1]) std::swap(arr[j], arr[j - 1]);
             }
         }
     }
