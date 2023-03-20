@@ -14,7 +14,7 @@ void GenerateRandomNumbers(int arr[], const int SIZE) {
 int main() {
     int arr[20];
     GenerateRandomNumbers(arr, 20);
-    Sortlib::ShellSort(arr);
+    Sortlib::quick_sort(arr);
     for (auto i : arr) cout << i << ' ';
     cout << '\n';
 }
