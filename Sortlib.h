@@ -1,8 +1,6 @@
 #ifndef SORTLIB_H
 #define SORTLIB_H
 
-#include<bits/stdc++.h>
-
 namespace Sortlib {
     template<typename T>
     void Merge(T arr[], int low, int mid, int high) {
@@ -51,6 +49,16 @@ namespace Sortlib {
     }
 
     template<typename T, int sz>
+    void InsertionSort(T (&arr)[sz]) {
+        for (int i = 0; i < sz; i++) {
+            for (int j = sz - 1; j > i; j--) {
+                if (arr[j] < arr[j - 1])
+                    std::swap(arr[j], arr[j - 1]);
+            }
+        }
+    }
+    
+    template<typename T, int sz>
     void SelectionSort(T (&arr)[sz]) {
         for (int i = 0; i < sz - 1; i++) {
             int least = i;
@@ -66,6 +74,20 @@ namespace Sortlib {
         for (int i = sz - 1; i > 0; i--) {
             for (int j = 1; j <= i; j++) {
                 if (arr[j] < arr[j - 1]) std::swap(arr[j], arr[j - 1]);
+            }
+        }
+    }
+
+    template<typename T, int sz>
+    void ShellSort (T (&arr)[sz]) {
+        for (int gap = sz / 2; gap > 0; gap /= 2) {
+            for (int i = gap; i < sz; i++) {
+                T temp = arr[i];
+                int j = i;
+                for (; j >= gap && temp < arr[j - gap]; j -= gap) {
+                    arr[j] = arr[j - gap];
+                }
+                arr[j] = temp;
             }
         }
     }
